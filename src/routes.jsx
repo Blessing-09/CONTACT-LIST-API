@@ -6,9 +6,10 @@ import {
     Route,
 } from "react-router-dom";
 import { Layout } from "./pages/Layout";
-import { Home } from "./pages/Home";
-import { Single } from "./pages/Single";
-import { Demo } from "./pages/Demo";
+import { Home } from "./pages/Home"; // export normal with curly braces
+import AddContacts from "./pages/AddContacts"; // export without braces the components when you export default
+// import { Single } from "./pages/Single";
+// import { Demo } from "./pages/Demo";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -19,12 +20,13 @@ export const router = createBrowserRouter(
     // Note: The child paths of the Layout element replace the Outlet component with the elements contained in the "element" attribute of these child paths.
 
       // Root Route: All navigation will start from here.
-      <Route path="/" element={<Layout />} errorElement={<h1>Not found!</h1>} >
+        <Route path="/" element={<Layout />} errorElement={<h1>Not found!</h1>} >
 
         {/* Nested Routes: Defines sub-routes within the BaseHome component. */}
-        <Route path= "/" element={<Home />} />
-        <Route path="/single/:theId" element={ <Single />} />  {/* Dynamic route for single items */}
-        <Route path="/demo" element={<Demo />} />
+        <Route path= "/" element={<Home />} /> {/* Home page by default */}
+        <Route path= "/AddContact" element={<AddContacts />} />  //two elements with three routes
+        <Route path= "/editContact/:idUser" element={<AddContacts />} />  //three routes with the same path, only the last one will be rendered
+        //: (the two points means the paramter is dynamic: it can change)idUser is a parameter that will be passed to the AddContacts component
       </Route>
     )
 );

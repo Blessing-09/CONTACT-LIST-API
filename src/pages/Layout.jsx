@@ -8,7 +8,7 @@ export const Layout = () => {
     return (
         <ScrollToTop>
             <Navbar />
-                <Outlet />
+                <Outlet />   {/* This is where the content of the page will be rendered (everything in home) */}
             <Footer />
         </ScrollToTop>
     )
